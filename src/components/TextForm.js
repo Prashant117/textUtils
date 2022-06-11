@@ -23,9 +23,10 @@ export default function TextForm(props) {
   };
 
   const handleCopy = () => {
-    let text2 = document.getElementById("myBox");
-    text2.select();
-    navigator.clipboard.writeText(text2.value);
+    // let text = document.getElementById("myBox");
+    // text.select();
+    // navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("copied to clipboard !", "success");
   };
 
@@ -57,19 +58,39 @@ export default function TextForm(props) {
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpperCaseClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleUpperCaseClick}
+        >
           Convert to UPPERCASE
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowerCaseClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleLowerCaseClick}
+        >
           Convert to lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleClearClick}
+        >
           Clear Textarea
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleCopy}
+        >
           Copy
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleExtraSpace}
+        >
           Remove Extra Space
         </button>
       </div>
@@ -82,12 +103,23 @@ export default function TextForm(props) {
       >
         <h3>Your text summary</h3>
         <p>
-          {text.split(" ").length} words & {text.length} characters.
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words & {text.length} characters.
         </p>
 
-        <p>{0.01 * text.split(" ").length} Minutes to read.</p>
+        <p>
+          {0.01 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes read.
+        </p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter Your text to Preview."}</p>
+        <p>{text.length > 0 ? text : "Nothing to Preview !"}</p>
       </div>
     </>
   );
