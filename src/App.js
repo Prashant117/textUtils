@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Alert from "./components/Alert";
 import About from "./components/About";
@@ -36,21 +36,21 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar
-          title="TextUtils"
-          aboutText="About"
-          mode={mode}
-          toggleMode={toggleMode}
-        />
-        <Alert alert={alert} />
-        <div className="container my-3">
-          {/* <TextForm
+      {/* <Router> */}
+      <Navbar
+        title="TextUtils"
+        aboutText="About"
+        mode={mode}
+        toggleMode={toggleMode}
+      />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        <TextForm
           heading="Enter Text to Analyze"
           mode={mode}
           showAlert={showAlert}
-        /> */}
-          <Routes>
+        />
+        {/* <Routes>
             <Route exact path="/about" element={<About mode={mode} />}></Route>
             <Route
               exact
@@ -63,9 +63,9 @@ function App() {
                 />
               }
             ></Route>
-          </Routes>
-        </div>
-      </Router>
+          </Routes> */}
+      </div>
+      {/* </Router> */}
     </>
   );
 }

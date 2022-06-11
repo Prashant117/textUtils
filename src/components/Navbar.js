@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -9,12 +9,12 @@ export default function Navbar(props) {
         className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
       >
         <div className="container-fluid">
-          {/* <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/">
             {props.title}
-          </a> */}
-          <Link className="navbar-brand" to="/">
+          </a>
+          {/* <Link className="navbar-brand" to="/">
             {props.title}
-          </Link>
+          </Link> */}
           <button
             className="navbar-toggler"
             type="button"
@@ -40,9 +40,9 @@ export default function Navbar(props) {
                 {/* <a className="nav-link" href="/about">
                   {props.aboutText}
                 </a> */}
-                <Link className="nav-link" to="/about">
+                {/* <Link className="nav-link" to="/about">
                   {props.aboutText}
-                </Link>
+                </Link> */}
               </li>
             </ul>
 
